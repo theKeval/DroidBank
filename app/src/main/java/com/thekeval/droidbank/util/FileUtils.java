@@ -1,6 +1,9 @@
 package com.thekeval.droidbank.util;
 
+import android.content.Context;
+
 import com.google.gson.Gson;
+import com.thekeval.droidbank.database.DatabaseHandler;
 import com.thekeval.droidbank.model.*;
 
 import java.io.BufferedReader;
@@ -15,15 +18,18 @@ import static com.thekeval.droidbank.util.Constants.*;
 public class FileUtils {
 
     private static FileUtils objFileUtils = null;
-    public static FileUtils getInstance() {
+    public static FileUtils getInstance(Context context) {
         if (objFileUtils == null)
-            objFileUtils = new FileUtils();
+            objFileUtils = new FileUtils(context);
 
         return objFileUtils;
     }
 
-    public FileUtils() {
+    DatabaseHandler db;
+
+    public FileUtils(Context context) {
         // initialize
+        db = new DatabaseHandler(context);
     }
 
     public String getJsonString(DataModel data) {
@@ -33,12 +39,8 @@ public class FileUtils {
 
     public void saveData(String jsonString) {
         try {
-            FileWriter fw = new FileWriter(FILE_NAME, false);
-            PrintWriter pw = new PrintWriter(fw);
 
-            pw.println(jsonString);
-            pw.close();
-
+            db.updateJson(jsonString);
             print("data saved");
 
         } catch (Exception ex) {
