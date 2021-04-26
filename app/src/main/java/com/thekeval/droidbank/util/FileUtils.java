@@ -60,19 +60,14 @@ public class FileUtils {
         DataModel data = null;
 
         try {
-            FileInputStream impFile = new FileInputStream(FILE_NAME);
-            BufferedReader buffer = new BufferedReader(new InputStreamReader(impFile));
+            String dataString = db.getJson();
 
-            String dataString = buffer.readLine();
             Gson g = new Gson();
             data = g.fromJson(dataString, DataModel.class);
 
             // print(data.toString());
 
-        } catch (FileNotFoundException fileNotFoundEx) {
-            // print("File not found");
-        }
-        catch (Exception ex) {
+        } catch (Exception ex) {
             print("error reading data from file.");
             ex.printStackTrace();
         }

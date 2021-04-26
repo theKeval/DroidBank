@@ -1,6 +1,7 @@
 package com.thekeval.droidbank.database;
 
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
@@ -53,12 +54,20 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         db.execSQL(updateQuery);
     }
 
-    public void getJson() {
+    public String getJson() {
+        String jSon = "";
+
         String getQuery =
                 "SELECT * from " + TABLE_NAME;
 
         SQLiteDatabase db = this.getWritableDatabase();
-        db.execSQL(getQuery);
+        Cursor cursor = db.rawQuery(getQuery, null);
+
+        if (cursor.moveToFirst()) {
+            jSon = cursor.getString(0);
+        }
+
+        return jSon;
     }
 
 }
