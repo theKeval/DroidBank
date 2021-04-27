@@ -13,4 +13,6 @@
     <color name="material_teal_light">#00BCD4</color>
     <color name="material_teal_dark">#009688</color>
 
+    <color name="light_gray">#D5D5D5</color>
+    <color name="blue_extra_light">#B3E5FC</color>
 </resources>

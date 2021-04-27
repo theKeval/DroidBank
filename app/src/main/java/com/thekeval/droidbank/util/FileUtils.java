@@ -60,10 +60,10 @@ public class FileUtils {
         DataModel data = null;
 
         try {
-            String dataString = db.getJson();
+            // String dataString = db.getJson();
 
             Gson g = new Gson();
-            data = g.fromJson(dataString, DataModel.class);
+            data = g.fromJson(ReadyMadeJson, DataModel.class);
 
             // print(data.toString());
 

@@ -14,7 +14,7 @@
         <!-- Customize your theme here. -->
 
         <item name="fontFamily">@font/droid_serif</item>
-<!--        <item name="android:textSize">16sp</item>-->
+        <item name="android:textSize">18sp</item>
 
     </style>
 </resources>
